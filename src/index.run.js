@@ -5,19 +5,17 @@ angular
 /** @ngInject */
 function run($transitions){
     $transitions.onStart({}, function (trans){
-        console.log('entrou aqui')
-
-        var sessionService = trans.injector().get('SessionService');
-        var authService = trans.injector().get('AuthService');
+        var SessionService = trans.injector().get('SessionService');
+        var AuthService = trans.injector().get('AuthService');
         var stateTo = trans.$to();
 
-        sessionService.init();
+        SessionService.init();
 
-        if(!authService.isAuthenticated()){        
+        if(!AuthService.isAuthenticated()){        
             if(publicRoute(stateTo.name)) return;
             return trans.router.stateService.transitionTo('login');
         } else if(publicRoute(stateTo.name)){
-            return trans.router.stateService.transitionTo('hello');
+            return trans.router.stateService.transitionTo('itens');
         }
 
         function publicRoute(route){

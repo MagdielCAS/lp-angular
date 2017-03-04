@@ -9,16 +9,15 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, $ht
   $httpProvider.defaults.headers.common['X-Api-Key'] = APP_KEY;
 
   $stateProvider
-    .state('hello', {
-      url: '/hello',
-      templateUrl: 'app/hello/hello.html',
-      controller: 'HelloController',
-      controllerAs: 'vm'
-    })
     .state('login', {
       url: '/login',
       templateUrl: 'app/login/login.html',
       controller: 'LoginController',
+      controllerAs: 'vm'
+    }).state('itens', {
+      url: '/itens',
+      templateUrl: 'app/item-list/item-list.template.html',
+      controller: 'ItemListController',
       controllerAs: 'vm'
     });
 }

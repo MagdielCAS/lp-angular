@@ -15,7 +15,7 @@ function AuthService(AUTH_SERVER, $http, $state, SessionService) {
         return $http.post(resource, credentials)
             .then(function (res) {
                 SessionService.onCreate(res.data.user);
-                $state.transitionTo('hello');
+                $state.transitionTo('itens');
             });
     }
 

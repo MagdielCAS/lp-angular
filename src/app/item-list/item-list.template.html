@@ -1,0 +1,57 @@
+<md-content layout-fill>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h1>Magdiel Campelo</h1>
+            <span flex></span>
+            <md-button class="md-raised" ng-click="vm.logout()" >Logout</md-button>
+        </div>
+    </md-toolbar>
+
+    <div  layout="column"  ng-cloak="">
+        <section layout="row" flex="">
+        <md-sidenav flex="20" class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4">
+        <md-toolbar class="md-theme-indigo">
+            <h1 class="md-toolbar-tools">New Task</h1>
+        </md-toolbar>
+        <md-content layout-padding="">
+            <!--Sidebar content-->
+            <div layout="column">
+                <div>
+                    <md-input-container>
+                        <label>Title:</label>
+                        <input ng-model="vm.newItem.title" />
+                    </md-input-container>
+                    <md-input-container>
+                        <label>Content:</label>
+                        <input ng-model="vm.newItem.content" />
+                    </md-input-container>
+                    
+                    <md-button class="md-raised" ng-click="vm.addItem(vm.newItem)">Add</md-button>
+                    
+                </div>
+            </div>
+        </md-content>
+        </md-sidenav>
+        <md-content flex="80" layout-padding="" class="container" >
+            <div layout layout-wrap layout-sm="column" layout-xs="column">
+                <!--Body content-->
+                
+                <div flex="50" flex-sm="100" flex-xs="100" 
+                ng-repeat="item in vm.itens">
+                    <md-card>
+                        <h2>{{item.title}}</h2>
+                        <md-card-content>
+                            <p>{{item.content}}</p>
+                        </md-card-content>
+                        <md-card-actions layout="row" layout-align="end center">
+                            <md-button ng-click="vm.resolve(item)">Resolve</md-button>
+                            <md-button class="md-primary md-raised" ng-click="vm.showCustom($event,item,vm.itens,vm.editedItem)">Edit</md-button>
+                        </md-card-actions>
+                    </md-card>
+                </div>
+            </div>
+        </md-content>
+    </section>
+    </div>
+</md-content>
+
