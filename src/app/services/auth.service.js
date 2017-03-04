@@ -3,7 +3,7 @@ angular
     .service('AuthService', AuthService);
 
 /** @ngInject */
-function AuthService(AUTH_SERVER, $http, $state) {
+function AuthService(AUTH_SERVER, $http, $state, SessionService) {
     var resource = AUTH_SERVER + 'auth/signin';
 
     this.auth = auth;
@@ -15,7 +15,7 @@ function AuthService(AUTH_SERVER, $http, $state) {
         return $http.post(resource, credentials)
             .then(function (res) {
                 SessionService.onCreate(res.data.user);
-                $state.go('hello');
+                $state.transitionTo('hello');
             });
     }
 

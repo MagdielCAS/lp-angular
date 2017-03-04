@@ -16,7 +16,7 @@ function SessionService() {
         this.user = storedCredentials.user;
     }
 
-    function onCreate(user, token) {
+    function onCreate(user) {
         var userJson = JSON.stringify(user);
         store(userJson);
     }

@@ -19,12 +19,12 @@ function LoginController(AuthService) {
      }
 
      function submit(){
-        console.log(AuthService.auth(vm.formData)
+        AuthService.auth(vm.formData)
                 .finally(function () {
                     console.log("deu certo");
                 })
                 .catch(function (err) {
                     console.error(err);
-                }));
+                });
      }
 }
